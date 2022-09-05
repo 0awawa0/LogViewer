@@ -76,11 +76,11 @@ fun Application.module(testing: Boolean = false) {
                 val log = FileReader("tmp/$uuid").readLines()
                 val entries = LinkedList<LogEntry>()
                 var lastColor = COLOR_LOG_TITLE
-                val debugRegexp = Regex("^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> D/")
-                val infoRegexp = Regex("^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> I/")
-                val warnRegexp = Regex("^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> W/")
-                val errorRegexp = Regex("^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> E/")
-                val assertRegexp = Regex("^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> A/")
+                val debugRegexp = Regex("(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> D/)|(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d .* D:)")
+                val infoRegexp = Regex("(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> I/)|(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d .* I:)")
+                val warnRegexp = Regex("(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> W/)|(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d .* W:)")
+                val errorRegexp = Regex("(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> E/)|(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d .* E:)")
+                val assertRegexp = Regex("(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d -> A/)|(^\\d\\d.\\d\\d.\\d\\d\\d\\d \\d\\d:\\d\\d:\\d\\d .* A:)")
 
                 var i = 1
                 val digitCount = log.size.toString().length
